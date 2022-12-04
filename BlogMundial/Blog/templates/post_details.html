@@ -1,0 +1,12 @@
+<h1>
+    {{post.titulo}}
+</h1>
+
+<small>
+    Por: {{post.autor.first_name}} {{post.autor.last_name}}
+</small>
+<hr>
+<br/>
+{{post.cuerpo}}
+<br/><br/>
+<a href="{% url 'home' %}">Atrás</a>
