@@ -1,3 +1,7 @@
+{% extends 'post.html' %}
+{% block title %} {{post.titulo}} {% endblock %}
+{% block post %}
+
 <h1>
     {{post.titulo}}
 </h1>
@@ -9,4 +13,7 @@
 <br/>
 {{post.cuerpo}}
 <br/><br/>
-<a href="{% url 'home' %}">Atrás</a>
+
+<a href="{% url 'home' %}" class="btn btn-primary">Atrás</a>
+
+{% endblock post %}

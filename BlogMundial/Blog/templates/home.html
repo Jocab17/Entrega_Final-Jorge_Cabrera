@@ -1,3 +1,6 @@
+{% extends 'index.html' %}
+{% block posts %}
+
 <h1>
     Posts
 </h1>
@@ -5,8 +8,10 @@
 <ul>
     {% for post in object_list %}
     <li>
-            <a href="{% url 'post-details' post.pk %}">{{post.titulo}}</a> - {{post.autor.first_name}} {{post.autor.last_name}}<br/>
+            <a href="{% url 'post_details' post.pk %}">{{post.titulo}}</a> - {{post.autor.first_name}} {{post.autor.last_name}}<br/>
             {{post.cuerpo}}
     </li>
     {% endfor %}
 </ul>
+
+{% endblock posts %}
