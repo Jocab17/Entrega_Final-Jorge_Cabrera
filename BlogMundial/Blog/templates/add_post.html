@@ -1,13 +1,17 @@
-{% extends 'index.html' %}
-{% block posts %}
+{% extends 'post.html' %}
+{% block title %} Añadir un post {% endblock %}
+{% block post %}
 
 <h1>
     Agregar un post
 </h1>
 <br>
-<form method="POST">{% csrf_token %}
-    {{form.as_p}}
-    <button type="submit" class="btn btn-secondary">Agregar</button>
-</form>
-
-{% endblock posts %}
+<div class="col-sm-6">
+    <div class="form-group">
+        <form method="POST">{% csrf_token %}
+            {{form.as_p}}
+            <button type="submit" class="btn btn-secondary">Agregar</button>
+        </form>
+    </div>
+</div>
+{% endblock post %}
