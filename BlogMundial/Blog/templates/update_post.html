@@ -1,16 +1,16 @@
 {% extends 'post.html' %}
-{% block title %} Añadir un post {% endblock %}
+{% block title %} Actualizar un post {% endblock %}
 {% block post %}
 {% if user.is_authenticated %}
     <h1>
-        Añadir un post
+        Actualizar un post
     </h1>
     <br>
     <div class="col-sm-6">
         <div class="form-group">
             <form method="POST">{% csrf_token %}
                 {{form.as_p}}
-                <button type="submit" class="btn btn-secondary">Agregar</button>
+                <button type="submit" class="btn btn-secondary">Actualizar</button>
             </form>
         </div>
     </div>

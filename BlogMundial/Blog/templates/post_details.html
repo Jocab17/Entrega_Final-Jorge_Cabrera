@@ -5,9 +5,22 @@
 <h1>
     {{post.titulo}}
 </h1>
-
+<h5>
+    {{post.subtitulo}}
+</h5>
 <small>
-    Por: {{post.autor.first_name}} {{post.autor.last_name}}
+    Por: {{post.autor.first_name}} {{post.autor.last_name}} 
+    <small>
+        {% if user.is_authenticated %}
+            - <a href="{% url 'update_post' post.pk %}">(Actualizar)</a>
+
+            <a href="{% url 'delete_post' post.pk %}">(Eliminar)</a>
+        {% endif %}
+    </small>
+</small>
+<br>
+<small>
+    {{post.fecha}}
 </small>
 <hr>
 <br/>
