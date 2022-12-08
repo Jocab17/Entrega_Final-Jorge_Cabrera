@@ -31,3 +31,8 @@ class DeletePostView(DeleteView):
     model = Post
     template_name = 'delete_post.html'
     success_url = reverse_lazy('home')
+
+class AllPostsView(ListView):
+    model = Post
+    template_name = 'all_posts.html'
+    ordering = ['-fecha']

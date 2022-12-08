@@ -1,18 +1,18 @@
-html{% extends 'index.html' %}
+{% extends 'index.html' %}
 {% block posts %}
 
 <h1>
-    Posts
+    Posts más recientes
 </h1>
-
+<br>
 <ul>
     {% for post in object_list %}
     <li>
-            <a href="{% url 'post_details' post.pk %}"><u><strong>{{post.titulo}}</strong></u></a><small class="text-muted"> - {{post.autor.first_name}} {{post.autor.last_name}}
+            <a href="{% url 'post_details' post.pk %}" class="link-primary"><u><strong>{{post.titulo}}</strong></u></a><small class="text-muted"> - {{post.autor.first_name}} {{post.autor.last_name}}
             <br>
             {{post.fecha}}
             </small>
-            <br/><br/>
+            <br/>
             <strong>
                 {{post.subtitulo}}
             </strong>

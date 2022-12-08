@@ -9,7 +9,7 @@ class Post(models.Model):
     subtitulo = models.CharField(max_length=255)
     autor = models.ForeignKey(User, on_delete=models.CASCADE)
     cuerpo = models.TextField()
-    fecha = models.DateField()
+    fecha = models.DateTimeField()
 
     def __str__(self):
         return self.titulo + ' | ' + str(self.autor)

@@ -2,31 +2,35 @@
 {% block title %} {{post.titulo}} {% endblock %}
 {% block post %}
 
-<h1>
-    {{post.titulo}}
-</h1>
-<h5>
-    {{post.subtitulo}}
-</h5>
-<small>
-    Por: {{post.autor.first_name}} {{post.autor.last_name}} 
+<div class="container">
+    <h1>
+        {{post.titulo}}
+    </h1>
+    <h5>
+        {{post.subtitulo}}
+    </h5>
     <small>
-        {% if user.is_authenticated %}
-            - <a href="{% url 'update_post' post.pk %}">(Actualizar)</a>
-
-            <a href="{% url 'delete_post' post.pk %}">(Eliminar)</a>
-        {% endif %}
+        Por: {{post.autor.first_name}} {{post.autor.last_name}} 
+        <small>
+            {% if user.is_authenticated %}
+                {% if user.id == post.autor.id %}
+                    - <a href="{% url 'update_post' post.pk %}" class="link-primary">(Actualizar)</a>
+            
+                    <a href="{% url 'delete_post' post.pk %}" class="link-primary">(Eliminar)</a>
+                {% endif %}
+            {% endif %}
+        </small>
     </small>
-</small>
-<br>
-<small>
-    {{post.fecha}}
-</small>
-<hr>
-<br/>
-{{post.cuerpo}}
-<br/><br/>
-
-<a href="{% url 'home' %}" class="btn btn-primary">Atrás</a>
+    <br>
+    <small>
+        {{post.fecha}}
+    </small>
+    <hr>
+    <br/>
+    {{post.cuerpo}}
+    <br/><br/>
+    
+    <a href="{% url 'home' %}" class="btn btn-primary">Atrás</a>
+</div>
 
 {% endblock post %}

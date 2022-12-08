@@ -1,11 +1,13 @@
 {% extends 'post.html' %}
 {% block title %} Añadir un post {% endblock %}
 {% block post %}
+
 {% if user.is_authenticated %}
+
+<div class="container">
     <h1>
         Añadir un post
     </h1>
-    <br>
     <div class="col-sm-6">
         <div class="form-group">
             <form method="POST">{% csrf_token %}
@@ -14,10 +16,20 @@
             </form>
         </div>
     </div>
+<!--Tuve que usar un poco de JavaScript-->
+    <script>
+        var usuario = '{{user.id}}';
+        document.getElementById('autor').value = usuario;
+    </script>
 {% else %}
+
     <h1>
         Debes iniciar sesión para ver esta página.
     </h1>
     <br>
+
 {% endif %}
+
+</div>
+    
 {% endblock post %}

@@ -1,0 +1,30 @@
+{% extends 'post.html' %}
+{% block title %} Todos los posts {% endblock %}
+{% block post %}
+
+<div class="container">
+    <h1>
+        Todos los posts
+    </h1>
+    <br>
+    <ul>
+        {% for post in object_list %}
+        <li>
+                <a href="{% url 'post_details' post.pk %}"><u><strong>{{post.titulo}}</strong></u></a><small class="text-muted"> - {{post.autor.first_name}} {{post.autor.last_name}}
+                <br>
+                {{post.fecha}}
+                </small>
+                <br/>
+                <strong>
+                    {{post.subtitulo}}
+                </strong>
+                </h6>
+                <br/>
+                {{post.cuerpo|slice:":100"}}...
+                <br/><br/>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock post %}
