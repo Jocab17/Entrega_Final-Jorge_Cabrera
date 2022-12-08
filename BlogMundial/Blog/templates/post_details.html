@@ -12,13 +12,18 @@
     <small>
         Por: {{post.autor.first_name}} {{post.autor.last_name}} 
         <small>
+
             {% if user.is_authenticated %}
+
                 {% if user.id == post.autor.id %}
+
                     - <a href="{% url 'update_post' post.pk %}" class="link-primary">(Actualizar)</a>
-            
-                    <a href="{% url 'delete_post' post.pk %}" class="link-primary">(Eliminar)</a>
-                {% endif %}
+                    <a href="{% url 'delete_post' post.pk %}" class="link-danger">(Eliminar)</a>
+
+                    {% endif %}
+
             {% endif %}
+
         </small>
     </small>
     <br>
@@ -26,11 +31,47 @@
         {{post.fecha}}
     </small>
     <hr>
-    <br/>
     {{post.cuerpo}}
     <br/><br/>
-    
+
+    {% if user.is_authenticated %}
+
+        <form action="{% url 'like_post' post.pk %}" method="POST">
+            {% csrf_token %}
+            {% if liked %}
+
+                <button type="submit", name="post_id", value="{{post.id}}", class="btn btn-danger btn-sm">
+                    Dislike
+                </button>
+
+            {% else %}
+
+                <button type="submit", name="post_id", value="{{post.id}}", class="btn btn-primary btn-sm">
+                    Like
+                </button>
+
+            {% endif %}
+
+            <small>- {{total_likes}}
+
+            {% if total_likes == 1 %}
+
+                Like
+
+            {% else %}
+
+                Likes
+
+            {% endif %}
+
+            </small>
+        </form>
+        <br/>
+
+    {% endif %}
+
     <a href="{% url 'home' %}" class="btn btn-primary">Atrás</a>
+    <br/><br/>
 </div>
 
 {% endblock post %}
