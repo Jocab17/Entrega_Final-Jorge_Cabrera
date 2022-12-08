@@ -9,7 +9,7 @@ class Post(models.Model):
     subtitulo = models.CharField(max_length=255)
     autor = models.ForeignKey(User, on_delete=models.CASCADE)
     cuerpo = models.TextField()
-    fecha = models.DateTimeField()
+    fecha = models.DateTimeField(default=datetime.now())
     likes = models.ManyToManyField(User, related_name='blog_posts')
 
     def total_likes(self):
