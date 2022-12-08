@@ -19,4 +19,4 @@ class Post(models.Model):
         return self.titulo + ' | ' + str(self.autor)
 
     def get_absolute_url(self):
-        return reverse('post_details', args=(str(self.id)))
+        return reverse('post_details', kwargs={'pk': self.pk})
