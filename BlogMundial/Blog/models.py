@@ -2,13 +2,15 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
 from datetime import datetime, date
+from ckeditor.fields import RichTextField
 # Create your models here.
 
 class Post(models.Model):
     titulo = models.CharField(max_length=255)
     subtitulo = models.CharField(max_length=255)
     autor = models.ForeignKey(User, on_delete=models.CASCADE)
-    cuerpo = models.TextField()
+    #cuerpo = models.TextField()
+    cuerpo = RichTextField(blank=True, null=True)
     fecha = models.DateTimeField(default=datetime.now())
     likes = models.ManyToManyField(User, related_name='blog_posts')
 
