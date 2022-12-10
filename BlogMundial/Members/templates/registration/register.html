@@ -5,12 +5,12 @@
 <h1>
     Registrarse
 </h1>
-<br>
 <div class="col-sm-6">
     <div class="form-group">
         <form method="POST">{% csrf_token %}
             {{form.as_p}}
-            <button type="submit" class="btn btn-secondary">Registrarse</button>
+            <button type="submit" class="btn btn-primary">Registrarse</button>
+            <br><br>
         </form>
     </div>
 </div>

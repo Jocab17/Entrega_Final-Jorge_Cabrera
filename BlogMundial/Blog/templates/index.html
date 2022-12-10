@@ -34,10 +34,15 @@
                         <ul class="dropdown-menu dropdown-menu-dark">
                             
                             {% if user.is_authenticated %}
+
+                                <li><a class="dropdown-item" href="{% url 'edit_profile' %}">Editar perfil</a></li>
                                 <li><a class="dropdown-item" href="{% url 'logout' %}">Cerrar sesión</a></li>
+
                             {% else %}
+
                                 <li><a class="dropdown-item" href="{% url 'register' %}">Registrarse</a></li>
                                 <li><a class="dropdown-item" href="{% url 'login' %}">Iniciar sesión</a></li>
+
                             {% endif %}
                                 
                         </ul>
