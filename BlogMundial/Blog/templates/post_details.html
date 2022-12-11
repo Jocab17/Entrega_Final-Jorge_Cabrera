@@ -31,6 +31,14 @@
         {{post.fecha}}
     </small>
     <hr>
+    
+    {% if post.header %}
+
+        <img src="{{post.header.url}}">
+        <br>
+
+    {% endif %}
+
     {{post.cuerpo|safe}}
     <br/><br/>
 
@@ -70,6 +78,24 @@
 
     {% endif %}
 
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="{{post.autor.profile.profile_pic.url}}" class="img-fluid rounded-start">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        {{post.autor.first_name}} {{post.autor.last_name}}
+                    </h5>
+                    <p class="card-text">
+                        {{post.autor.profile.bio}}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
     <a href="{% url 'home' %}" class="btn btn-secondary">Atrás</a>
     <br/><br/>
 </div>

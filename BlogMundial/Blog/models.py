@@ -9,8 +9,9 @@ class Post(models.Model):
     titulo = models.CharField(max_length=255)
     subtitulo = models.CharField(max_length=255)
     autor = models.ForeignKey(User, on_delete=models.CASCADE)
+    header = models.ImageField(null=True, blank=True, upload_to='images/')
     #cuerpo = models.TextField()
-    cuerpo = RichTextField(blank=True, null=True)
+    cuerpo = RichTextField(null=True, blank=True)
     fecha = models.DateTimeField(default=datetime.now())
     likes = models.ManyToManyField(User, related_name='blog_posts')
 
