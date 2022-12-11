@@ -36,6 +36,10 @@ class AddPostView(CreateView):
     form_class = PostForm
     template_name = 'add_post.html'
 
+    def form_valid(self, form):
+        form.instance.autor = self.request.user
+        return super().form_valid(form)
+
 class UpdatePostView(UpdateView):
     model = Post
     form_class = UpdateForm

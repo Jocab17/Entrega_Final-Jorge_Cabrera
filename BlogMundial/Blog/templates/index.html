@@ -36,8 +36,15 @@
                             {% if user.is_authenticated %}
 
                                 <li><a class="dropdown-item" href="{% url 'edit_profile' %}">Configuración de usuario</a></li>
-                                <li><a class="dropdown-item" href="{% url 'edit_profile_page' user.profile.id %}">Editar página de perfil</a></li>
-                                <li><a class="dropdown-item" href="{% url 'profile' user.profile.id %}">Ver perfil de usuario</a></li>
+                                
+                                {% if user.profile.id %}
+                                    <li><a class="dropdown-item" href="{% url 'edit_profile_page' user.profile.id %}">Editar página de perfil</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'profile' user.profile.id %}">Ver perfil de usuario</a></li>
+                                {% else %}
+                                    <li><a class="dropdown-item" href="{% url 'create_profile_page' %}">Crear página de perfil</a></li>
+                                {% endif %}
+                                    
+                                
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="{% url 'logout' %}">Cerrar sesión</a></li>
 

@@ -1,6 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.contrib.auth.models import User
 from django import forms
+from .models import *
 
 class RegistrationForm(UserCreationForm):
     first_name = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'class': 'form-control'}))
@@ -53,3 +54,17 @@ class PasswordChangingForm(PasswordChangeForm):
         self.fields['old_password'].label = "Contraseña actual"
         self.fields['new_password1'].label = "Nueva contraseña"
         self.fields['new_password2'].label = "Nueva contraseña (confirmación)"
+
+class ProfilePageForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ('bio', 'profile_pic')
+        widgets = {
+            'bio': forms.Textarea(attrs={'class': 'form-control'}),
+            #'profile_pic': forms.TextInput(attrs={'class': 'form-control'}),
+        }
+
+    def __init__(self, *args, **kwargs):
+        super(ProfilePageForm, self).__init__(*args, **kwargs)
+
+        self.fields['profile_pic'].label = "Foto de perfil"

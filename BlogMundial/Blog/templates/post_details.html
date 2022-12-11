@@ -34,10 +34,10 @@
     <hr>
     
     {% if post.header %}
-
-        <img src="{{post.header.url}}">
-        <br>
-
+        <div class="row d-flex justify-content-center">
+            <img src="{{post.header.url}}">
+            <br>
+        </div>
     {% endif %}
 
     {{post.cuerpo|safe}}
@@ -98,7 +98,9 @@
                     <p class="card-text">
                         {{post.autor.profile.bio}}
                     </p>
-                    <a href="{% url 'profile' post.autor.profile.id %}">Ver perfil</a>
+                    {% if user.profile.id %}
+                        <a href="{% url 'profile' post.autor.profile.id %}">Ver perfil</a>
+                    {% endif %}
                 </div>
             </div>
         </div>
