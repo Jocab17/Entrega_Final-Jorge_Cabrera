@@ -63,3 +63,7 @@ def LikeView(request, pk):
         liked = True
 
     return HttpResponseRedirect(reverse('post_details', args=[str(pk)]))
+
+def AcercaDeMiView(request):
+
+    return render(request, 'about.html')
