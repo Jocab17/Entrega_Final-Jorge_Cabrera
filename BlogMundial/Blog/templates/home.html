@@ -6,7 +6,7 @@
 </h1>
 <br>
 <ul>
-    {% for post in object_list %}
+    {% for post in object_list|slice:":5" %}
     <li>
             <a href="{% url 'post_details' post.pk %}" class="link-primary"><u><strong>{{post.titulo}}</strong></u></a><small class="text-muted"> - {{post.autor.first_name}} {{post.autor.last_name}}
             <br>
