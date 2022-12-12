@@ -19,7 +19,7 @@ class CreateProfilePageView(CreateView):
     template_name = 'registration/create_profile_page.html'
 
     def form_valid(self, form):
-        form.instance.autor = self.request.user
+        form.instance.user = self.request.user
         return super().form_valid(form)
 
 class ProfilePageView(DetailView):
