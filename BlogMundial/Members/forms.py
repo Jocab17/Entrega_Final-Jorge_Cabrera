@@ -61,8 +61,11 @@ class ProfilePageForm(forms.ModelForm):
         fields = ('bio', 'profile_pic')
         widgets = {
             'bio': forms.Textarea(attrs={'class': 'form-control'}),
-            #'profile_pic': forms.TextInput(attrs={'class': 'form-control'}),
         }
+
+    def get_success_url(self):
+        
+        return reverse('profile')
 
     def __init__(self, *args, **kwargs):
         super(ProfilePageForm, self).__init__(*args, **kwargs)

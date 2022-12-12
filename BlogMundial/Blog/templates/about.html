@@ -35,7 +35,17 @@
                             
                             {% if user.is_authenticated %}
 
-                                <li><a class="dropdown-item" href="{% url 'edit_profile' %}">Editar perfil</a></li>
+                                <li><a class="dropdown-item" href="{% url 'edit_profile' %}">Configuración de usuario</a></li>
+                                
+                                {% if user.profile.id %}
+                                    <li><a class="dropdown-item" href="{% url 'edit_profile_page' user.profile.id %}">Editar página de perfil</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'profile' user.profile.id %}">Ver perfil de usuario</a></li>
+                                {% else %}
+                                    <li><a class="dropdown-item" href="{% url 'create_profile_page' %}">Crear página de perfil</a></li>
+                                {% endif %}
+                                    
+                                
+                                <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="{% url 'logout' %}">Cerrar sesión</a></li>
 
                             {% else %}
@@ -56,7 +66,7 @@
                             <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'add_post' %}">Añadir un post</a></li>
                         {% endif %}
                         
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="about.html">Acerca de mí</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'about' %}">Acerca de mí</a></li>
                     </ul>
                 </div>
             </div>
