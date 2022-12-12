@@ -10,4 +10,5 @@ urlpatterns = [
     path('all_posts/', AllPostsView.as_view(), name='all_posts'),
     path('like/<int:pk>', LikeView, name='like_post'),
     path('acerca_de_mi/', AcercaDeMiView, name='about'),
+    path('add_comment/<int:pk>/comment', AddCommentView.as_view(), name='add_comment'),
 ]

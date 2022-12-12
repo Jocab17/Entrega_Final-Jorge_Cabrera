@@ -41,7 +41,7 @@
     {% endif %}
 
     {{post.cuerpo|safe}}
-    <hr>
+
     {% if user.is_authenticated %}
 
         <form action="{% url 'like_post' post.pk %}" method="POST">
@@ -74,7 +74,7 @@
 
             </small>
         </form>
-        <br/>
+        <br>
 
     {% endif %}
 
@@ -104,9 +104,29 @@
             </div>
         </div>
     </div>
-    <br>
+    <h2>
+        Comentarios
+    </h2>
+    
+    {% if not post.comentarios.all %}
+        No hay comentarios aún. <a href="{% url 'add_comment' post.pk %}">Agregar un comentario</a>
+        <br>
+    {% else %}
+        <a href="{% url 'add_comment' post.pk %}">Agregar un comentario</a>
+        <br></br>
+        {% for comentario in post.comentarios.all %}
+            <strong><small>
+                {{comentario.nombre}} - {{comentario.fecha}}
+            </strong></small>
+            <br>
+            {{comentario.cuerpo}}
+            <br/></br>
+        {% endfor %}
+    {% endif %}
+    
+    <hr>
     <a href="{% url 'home' %}" class="btn btn-secondary">Atrás</a>
-    <br/><br/>
+    <br><br/>
 </div>
 
 {% endblock post %}

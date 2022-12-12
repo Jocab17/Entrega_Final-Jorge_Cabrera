@@ -1,0 +1,20 @@
+{% extends 'post.html' %}
+{% block title %} Agregar un comentario {% endblock %}
+{% block post %}
+
+<div class="container">
+    <h1>
+        Agregar un comentario
+    </h1>
+    <div class="col-sm-6">
+        <div class="form-group">
+            <form method="POST">{% csrf_token %}
+                {{form.as_p}}
+                <button type="submit" class="btn btn-secondary">Agregar</button>
+            </form>
+        </div>
+    </div>
+    <br>
+</div>
+    
+{% endblock post %}
