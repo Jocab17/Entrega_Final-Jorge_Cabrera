@@ -2,33 +2,38 @@
 {% block title %} Editar página de perfil {% endblock %}
 {% block post %}
 
-<div class="container">
+<div class="container px-4 px-lg-5">
 
-{% if user.is_authenticated %}
-    {% if user.id == profile.user.id %}
-            <h1>
-                Editar página de perfil
-            </h1>
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <form method="POST" enctype="multipart/form-data">{% csrf_token %}
-                        {{form.as_p}}
-                        <button type="submit" class="btn btn-primary">Actualizar</button>
-                    </form>
+    {% if user.is_authenticated %}
+
+        {% if user.id == profile.user.id %}
+                <h1>
+                    Editar página de perfil
+                </h1>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+                            {{form.as_p}}
+                            <button type="submit" class="btn btn-primary">Actualizar</button>
+                            <br><br>
+                            <a href="{% url 'profile' user.profile.id %}" class="btn btn-secondary">Atrás</a>
+                            <br><br>
+                        </form>
+                    </div>
                 </div>
-            </div>
+        {% else %}
+            <h1>
+                Debes ser el usuario correcto para editar esta página.
+            </h1>
+            <br>
+        {% endif %}
+
     {% else %}
         <h1>
-            Debes ser el usuario correcto para editar esta página.
+            Debes iniciar sesión para ver esta página.
         </h1>
         <br>
     {% endif %}
-{% else %}
-    <h1>
-        Debes iniciar sesión para ver esta página.
-    </h1>
-    <br>
-{% endif %}
 
 </div>
 

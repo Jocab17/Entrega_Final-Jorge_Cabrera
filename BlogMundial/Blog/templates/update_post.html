@@ -2,11 +2,10 @@
 {% block title %} Actualizar un post {% endblock %}
 {% block post %}
 
-{% if user.is_authenticated %}
+<div class="container px-4 px-lg-5">
+    {% if user.is_authenticated %}
 
-    {% if user.id == post.autor.id %}
-
-        <div class="container">
+        {% if user.id == post.autor.id %}
             <h1>
                 Actualizar un post
             </h1>
@@ -15,30 +14,25 @@
                     <form method="POST" enctype="multipart/form-data">{% csrf_token %}
                         {{form.media}}
                         {{form.as_p}}
-                        <button type="submit" class="btn btn-secondary">Actualizar</button>
+                        <button type="submit" class="btn btn-primary">Actualizar</button>
                     </form>
                 </div>
             </div>
-        </div>
+        {% else %}
+            <h1>
+                Debes ser el autor del post para actualizarlo.
+            </h1>
+            <br>
+        {% endif %}
 
     {% else %}
-
         <h1>
-            Debes ser el autor del post para actualizarlo.
+            Debes iniciar sesión para ver esta página.
         </h1>
         <br>
-    
     {% endif %}
 
-{% else %}
-
-    <h1>
-        Debes iniciar sesión para ver esta página.
-    </h1>
     <br>
+</div>
 
-{% endif %}
-
-    <br>
-    
 {% endblock post %}

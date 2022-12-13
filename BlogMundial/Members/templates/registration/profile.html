@@ -2,32 +2,38 @@
 {% load static %}
 {% block post %}
 
-<h1>
-    Perfil de usuario
-</h1>
-<br>
-<div class="card mb-3">
-    <div class="row g-0">
-        <div class="col-md-4">
-            
-            {% if page_user.profile_pic %}
-                <img src="{{page_user.profile_pic.url}}" class="img-fluid rounded-start">
-            {% else %}
-                <img src="{% static 'Blog/assets/img/default_profile_pic.jpg' %}" class="img-fluid rounded-start">
-            {% endif %}
+<div class="container px-4 px-lg-5">
+    <h1>
+        Perfil de usuario
+    </h1>
+    <br>
+    <div class="card mb-3">
+        <div class="row g-0">
+            <div class="col-md-4">
                 
-        </div>
-        <div class="col-md-8">
-            <div class="card-body">
-                <h5 class="card-title">
-                    {{page_user.user.first_name}} {{page_user.user.last_name}}
-                </h5>
-                <p class="card-text">
-                    {{page_user.bio}}
-                </p>
+                {% if page_user.profile_pic %}
+                    <img src="{{page_user.profile_pic.url}}" class="img-fluid rounded-start">
+                {% else %}
+                    <img src="{% static 'Blog/assets/img/default_profile_pic.jpg' %}" class="img-fluid rounded-start">
+                {% endif %}
+                    
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        {{page_user.user.first_name}} {{page_user.user.last_name}}
+                    </h5>
+                    <p class="card-text">
+                        {{page_user.bio}}
+                    </p>
+                </div>
             </div>
         </div>
     </div>
+    <a href="{% url 'edit_profile_page' user.profile.id %}" class="btn btn-primary">Editar</a>
+    <br><br>
+    <a href="{% url 'home' %}" class="btn btn-secondary">Atrás</a>
+    <br><br>
 </div>
 
 {% endblock post %}

@@ -3,7 +3,7 @@
 {% block title %} {{post.titulo}} {% endblock %}
 {% block post %}
 
-<div class="container">
+<div class="container px-4 px-lg-5">
     <h1>
         {{post.titulo}}
     </h1>
@@ -17,11 +17,9 @@
             {% if user.is_authenticated %}
 
                 {% if user.id == post.autor.id %}
-
                     - <a href="{% url 'update_post' post.pk %}" class="link-primary">(Actualizar)</a>
                     <a href="{% url 'delete_post' post.pk %}" class="link-danger">(Eliminar)</a>
-
-                    {% endif %}
+                {% endif %}
 
             {% endif %}
 
@@ -43,39 +41,30 @@
     {{post.cuerpo|safe}}
 
     {% if user.is_authenticated %}
-
         <form action="{% url 'like_post' post.pk %}" method="POST">
             {% csrf_token %}
-            {% if liked %}
 
+            {% if liked %}
                 <button type="submit", name="post_id", value="{{post.id}}", class="btn btn-danger btn-sm">
                     Unlike
                 </button>
-
             {% else %}
-
                 <button type="submit", name="post_id", value="{{post.id}}", class="btn btn-primary btn-sm">
                     Like
                 </button>
-
             {% endif %}
 
             <small>- {{total_likes}}
 
             {% if total_likes == 1 %}
-
                 Like
-
             {% else %}
-
                 Likes
-
             {% endif %}
 
             </small>
         </form>
-        <br>
-
+    <br>
     {% endif %}
 
     <div class="card mb-3">
@@ -85,7 +74,7 @@
                 {% if post.autor.profile.profile_pic %}
                     <img src="{{post.autor.profile.profile_pic.url}}" class="img-fluid rounded-start">
                 {% else %}
-                    <img src="{% static 'Blog/assets/img/default_profile_pic.jpg' %}" class="img-fluid rounded-start">
+                    <img src="{% static 'Blog/assets/img/default_profile_picture.jpg' %}" class="img-fluid rounded-start">
                 {% endif %}
                     
             </div>
@@ -97,9 +86,11 @@
                     <p class="card-text">
                         {{post.autor.profile.bio}}
                     </p>
+
                     {% if user.profile.id %}
                         <a href="{% url 'profile' post.autor.profile.id %}" class="btn btn-primary">Ver perfil</a>
                     {% endif %}
+
                 </div>
             </div>
         </div>
@@ -109,24 +100,30 @@
     </h2>
     
     {% if not post.comentarios.all %}
-        No hay comentarios aún. <a href="{% url 'add_comment' post.pk %}">Agregar un comentario</a>
+        <small>
+        No hay comentarios aún. <a href="{% url 'add_comment' post.pk %}" class="link-primary"><u>Agregar un comentario</u></a>
+        </small>
         <br>
     {% else %}
-        <a href="{% url 'add_comment' post.pk %}">Agregar un comentario</a>
-        <br></br>
+        <small>
+        <a href="{% url 'add_comment' post.pk %}" class="link-primary"><u>Agregar un comentario</u></a>
+        </small>
+        <br>
+
         {% for comentario in post.comentarios.all %}
-            <strong><small>
+            <strong><small><hr>
                 {{comentario.nombre}} - {{comentario.fecha}}
             </strong></small>
             <br>
             {{comentario.cuerpo}}
-            <br/></br>
+            <br>
         {% endfor %}
+
     {% endif %}
     
     <hr>
     <a href="{% url 'home' %}" class="btn btn-secondary">Atrás</a>
-    <br><br/>
+    <br><br>
 </div>
 
 {% endblock post %}

@@ -2,31 +2,31 @@
 {% block title %} Añadir un post {% endblock %}
 {% block post %}
 
-{% if user.is_authenticated %}
+<div class="container px-4 px-lg-5">
 
-<div class="container">
-    <h1>
-        Añadir un post
-    </h1>
-    <div class="col-sm-6">
-        <div class="form-group">
-            <form method="POST" enctype="multipart/form-data">{% csrf_token %}
-                {{form.media}}
-                {{form.as_p}}
-                <button type="submit" class="btn btn-secondary">Añadir</button>
-            </form>
+    {% if user.is_authenticated %}
+        <h1>
+            Añadir un post
+        </h1>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+                    {{form.media}}
+                    {{form.as_p}}
+                    <button type="submit" class="btn btn-primary">Añadir</button>
+                    <br><br>
+                    <a href="{% url 'home' %}" class="btn btn-secondary">Atrás</a>
+                    <br><br>
+                </form>
+            </div>
         </div>
-    </div>
-
-{% else %}
-
-    <h1>
-        Debes iniciar sesión para ver esta página.
-    </h1>
-    <br>
-
-{% endif %}
+    {% else %}
+        <h1>
+            Debes iniciar sesión para ver esta página.
+        </h1>
+        <br>
+    {% endif %}
 
 </div>
-    
+
 {% endblock post %}

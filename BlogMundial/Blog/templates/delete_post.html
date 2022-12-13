@@ -1,14 +1,14 @@
 {% extends 'post.html' %}
-{% block title %} Eliminar un post {% endblock %}
+{% block title %} Eliminar post {% endblock %}
 {% block post %}
 
-{% if user.is_authenticated %}
+<div class="container px-4 px-lg-5">
 
-    {% if user.id == post.autor.id %}
+    {% if user.is_authenticated %}
 
-        <div class="container">
+        {% if user.id == post.autor.id %}
             <h1>
-                Eliminar un post
+                Eliminar post
             </h1>
             <br>
             <h3>
@@ -23,33 +23,27 @@
                     <form method="POST">{% csrf_token %}
                         <strong>
                             ¿Estás seguro que deseas eliminar este post?
-                            <br>
                         </strong>
-                        <br>
+                        <br><br>
                         <button type="submit" class="btn btn-danger">Eliminar</button>
                     </form>
                 </div>
             </div>
-        </div>
-
-    {% else %}
-    
-        <h1>
-            Debes ser el autor del post para eliminarlo.
-        </h1>
-        <br>
-    
+        {% else %}
+            <h1>
+                Debes ser el autor del post para eliminarlo.
+            </h1>
+            <br>
         {% endif %}
 
-{% else %}
-
-    <h1>
-        Debes iniciar sesión para ver esta página.
-    </h1>
-    <br>
-
-{% endif %}
+    {% else %}
+        <h1>
+            Debes iniciar sesión para ver esta página.
+        </h1>
+        <br>
+    {% endif %}
 
     <br>
+</div>
 
 {% endblock post %}

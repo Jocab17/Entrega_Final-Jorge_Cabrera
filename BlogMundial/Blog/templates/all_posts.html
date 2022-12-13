@@ -2,28 +2,32 @@
 {% block title %} Todos los posts {% endblock %}
 {% block post %}
 
-<div class="container">
+<div class="container px-4 px-lg-5">
     <h1>
         Todos los posts
     </h1>
     <br>
     <ul>
+
         {% for post in object_list %}
-        <li>
-                <a href="{% url 'post_details' post.pk %}" class="link-primary"><u><strong>{{post.titulo}}</strong></u></a><small class="text-muted"> - {{post.autor.first_name}} {{post.autor.last_name}}
-                <br>
-                {{post.fecha}}
+            <li>
+                <a href="{% url 'post_details' post.pk %}" class="link-primary"><u><strong>{{post.titulo}}</strong></u></a>
+                <small class="text-muted"> 
+                    - {{post.autor.first_name}} {{post.autor.last_name}}
+                    <br>
+                    {{post.fecha}}
                 </small>
-                <br/>
+                <br>
                 <strong>
                     {{post.subtitulo}}
                 </strong>
                 </h6>
-                <br/>
-                {{post.cuerpo|slice:":100"|safe}}...
-                <br/><br/>
+                <br>
+                {{post.cuerpo|slice:":150"|safe}}...
+                <br><br>
             </li>
         {% endfor %}
+        
     </ul>
 </div>
 

@@ -2,21 +2,23 @@
 {% block title %} Iniciar sesión {% endblock %}
 {% block post %}
 
-<h1>
-    Iniciar sesión
-</h1>
-<div class="col-sm-6">
-    <div class="form-group">
-        <form method="POST">{% csrf_token %}
-            <div class="mb-3">
-                <input type="text" class="form-control" name="username" placeholder="Usuario">
-            </div>
-            <div class="mb-3">
-                <input type="password" class="form-control" name="password" placeholder="Contraseña">
-            </div>
-            <button type="submit" class="btn btn-primary">Iniciar sesión</button>
-            <br><br>
-        </form>
+<div class="container px-4 px-lg-5">
+    <h1>
+        Iniciar sesión
+    </h1>
+    <div class="col-sm-6">
+        <div class="form-group">
+            <form method="POST">{% csrf_token %}
+                <div class="mb-3">
+                    <input type="text" class="form-control" name="username" placeholder="Usuario">
+                </div>
+                <div class="mb-3">
+                    <input type="password" class="form-control" name="password" placeholder="Contraseña">
+                </div>
+                <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+                <br><br>
+            </form>
+        </div>
     </div>
 </div>
 

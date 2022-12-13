@@ -2,16 +2,18 @@
 {% block title %} Registrarse {% endblock %}
 {% block post %}
 
-<h1>
-    Registrarse
-</h1>
-<div class="col-sm-6">
-    <div class="form-group">
-        <form method="POST">{% csrf_token %}
-            {{form.as_p}}
-            <button type="submit" class="btn btn-primary">Registrarse</button>
-            <br><br>
-        </form>
+<div class="container px-4 px-lg-5">
+    <h1>
+        Registrarse
+    </h1>
+    <div class="col-sm-6">
+        <div class="form-group">
+            <form method="POST">{% csrf_token %}
+                {{form.as_p}}
+                <button type="submit" class="btn btn-primary">Registrarse</button>
+                <br><br>
+            </form>
+        </div>
     </div>
 </div>
 
