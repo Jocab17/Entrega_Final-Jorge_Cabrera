@@ -13,7 +13,7 @@ class Post(models.Model):
     #cuerpo = models.TextField()
     cuerpo = RichTextField(null=True, blank=True)
     fecha = models.DateTimeField(default=datetime.now())
-    likes = models.ManyToManyField(User, related_name='blog_posts')
+    likes = models.ManyToManyField(User, related_name='blog_posts', blank=True)
 
     def total_likes(self):
         return self.likes.count()
