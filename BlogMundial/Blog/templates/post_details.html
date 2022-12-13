@@ -86,11 +86,7 @@
                     <p class="card-text">
                         {{post.autor.profile.bio}}
                     </p>
-
-                    {% if user.profile.id %}
-                        <a href="{% url 'profile' post.autor.profile.id %}" class="btn btn-primary">Ver perfil</a>
-                    {% endif %}
-
+                    <a href="{% url 'profile' post.autor.profile.id %}" class="btn btn-primary">Ver perfil</a>
                 </div>
             </div>
         </div>
